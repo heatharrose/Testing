@@ -17,8 +17,8 @@ int worldX = 0;
 
 constexpr int playerWidth = 4;
 constexpr int playerHeight = 4;
-constexpr int groundLevel = (HEIGHT - 9);
-constexpr SQ15x16 gravity = 0.23;
+constexpr int groundLevel = (HEIGHT - 12);
+constexpr SQ15x16 gravity = 0.18;
 byte frame = 0;
 int spritestate = 0;
 
