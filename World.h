@@ -1,4 +1,5 @@
 #include <Arduboy2.h>
+
 const unsigned char ground[] PROGMEM = {
 
   8, 8,
@@ -13,8 +14,8 @@ const unsigned char mapArray[] PROGMEM = {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,      0, 0, 1,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,      0, 0, 1,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,      0, 0, 1,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,      0, 0, 1,
-  0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,      0, 1, 1,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,      0, 0, 1,
+  0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,      0, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,      1, 1, 1,
 };
 
@@ -30,16 +31,25 @@ uint8_t getMapTile(uint8_t x, uint8_t y) {
 constexpr size_t screenWidth = (WIDTH / tileWidth);
 
 constexpr unsigned char SpriteStanding[] PROGMEM = {
-  0xf1, 0xfd, 0xff, 0xff, 0xfd, 0xf1, 0x81, 0xff, 
+
+  8, 8,
+  
+  0xf1, 0xfd, 0xff, 0xff, 0xfd, 0xf1, 0x81, 0x00, 
 };
 
 constexpr unsigned char SpriteWalking[] PROGMEM = {
+
+  8, 8,
+  
   0xf1, 0xfd, 0xff, 0xff, 0xfd, 0xf1, 0x81, 0xff,
   0xf1, 0xfd, 0xfd, 0xfd, 0xfd, 0xf1, 0x81, 0xff,
   0xff, 0xff, 0xff, 0xff, 0xfd, 0xf9, 0x81, 0xff, 
 };
 
 constexpr unsigned char SpriteJumping[] PROGMEM = {
+
+  8, 8,
+  
    0xf1, 0xfd, 0xff, 0xff, 0xfd, 0xf1, 0x81, 0xff,
    0xff, 0xff, 0xff, 0xff, 0xfd, 0xf9, 0x81, 0xff, 
    0xff, 0xff, 0xff, 0xff, 0xfd, 0xf9, 0x81, 0xff, 
