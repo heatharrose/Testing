@@ -4,6 +4,8 @@
 
 Arduboy2 arduboy;
 
+Sprites sprite;
+
 SQ15x16 playerX = 62;
 SQ15x16 playerY = 58;
 SQ15x16 playerVelocityY = 0;
@@ -18,7 +20,7 @@ constexpr int playerHeight = 4;
 constexpr int groundLevel = (HEIGHT - 9);
 constexpr SQ15x16 gravity = 0.23;
 byte frame = 0;
-int spriteState = 0;
+int spritestate = 0;
 
 enum {
   STAND_STILL,
@@ -79,6 +81,21 @@ void loop() {
 
   if(!arduboy.nextFrame())
   return;
+
+  switch (spritestate) {
+  case STAND_STILL :
+  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteStanding, frame);
+ playerStanding = true;
+ break;
+  case WALK :
+  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteWalking, frame); 
+ playerWalking = true;
+ break;
+  case JUMP :
+  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteJumping, frame);
+  playerJumping = true;
+  break;
+  }
   //checks button status
   arduboy.pollButtons();
 
@@ -137,7 +154,7 @@ if(arduboy.justPressed(A_BUTTON))
     
     onGround = false;
     playerJumping = true;
-    SpriteState = JUMP;
+    spritestate = JUMP;
 
   }
 }
@@ -176,18 +193,6 @@ for(uint8_t y = 0; y < mapHeight; ++y) {
      }
   //draw player
   sprite.drawSelfMasked(playerX.getInteger(), playerY.getInteger(), SpriteStanding, frame);
-switch (SpriteState) {
-  case STILL :
-  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteStanding, frame);
- playerStanding = true;
-  case WALK;
-  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteWalking, frame); 
- playerWalking = true;
-  case JUMP;
-  sprite.drawPlusMask(playerX.getInteger(), playerY.getInteger(), SpriteJumping, frame);
-  playerJumping = true;
-}
-
 }
   arduboy.display();
 }
